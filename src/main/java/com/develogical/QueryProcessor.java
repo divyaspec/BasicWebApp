@@ -19,18 +19,32 @@ public class QueryProcessor {
             return findMax(query);
         } else if(query.toLowerCase().contains("multiplied")) {
             return findMulitply(query);
-        } else if(query.toLowerCase().contains("divide")) {
+        } /*else if(query.toLowerCase().contains("divided")) {
             return findDivide(query);
-        }
+        }*/
         return "";
     }
 
-    private String findDivide(String query) {
-        return null;
-    }
+//    private String findDivide(String query) {
+//        String[] s = query.split("\\:");
+//        String s1 = s[1].replaceAll("[^-?0-9]+", " ");
+//
+//        List<String> numbers = Arrays.asList(s1.trim().split(" "));
+//        List<Integer> integers =
+//            numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
+//
+//        return String.valueOf((integers.get(0) / integers.get(1)));
+//    }
 
     private String findMulitply(String query) {
-        return null;
+        String[] s = query.split("\\:");
+        String s1 = s[1].replaceAll("[^-?0-9]+", " ");
+
+        List<String> numbers = Arrays.asList(s1.trim().split(" "));
+        List<Integer> integers =
+            numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
+
+        return String.valueOf((integers.get(0) * integers.get(1)));
     }
 
     private String calculate(String query) {
