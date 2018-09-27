@@ -1,9 +1,7 @@
 package com.develogical;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.OptionalInt;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class QueryProcessor {
 
@@ -19,15 +17,32 @@ public class QueryProcessor {
         }
         else if(query.toLowerCase().contains("largest")) {
             return findMax(query);
+        } else if(query.toLowerCase().contains("multiplied")) {
+            return findMulitply(query);
+        } else if(query.toLowerCase().contains("divide")) {
+            return findDivide(query);
         }
-        // which of the following numbers is the largest: 375, 99
         return "";
     }
 
-    private String calculate(String query) {
-        String s = query.replaceAll("[^0-9]", "");
-
+    private String findDivide(String query) {
         return null;
+    }
+
+    private String findMulitply(String query) {
+        return null;
+    }
+
+    private String calculate(String query) {
+        String[] s = query.split("\\:");
+        String s1 = s[1].replaceAll("[^-?0-9]+", " ");
+
+        List<String> numbers = Arrays.asList(s1.trim().split(" "));
+        List<Integer> integers =
+            numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
+
+        return String.valueOf((integers.get(0) + integers.get(1)));
+
     }
 
     private String findMax(String query){

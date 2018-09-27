@@ -35,4 +35,11 @@ public class QueryProcessorTest {
         assertThat(queryProcessor.process("72064aa0: which of the following numbers is the largest: 79, 0, 98, 908"), is("908"));
     }
 
+    @Test
+    public void isPlus() throws Exception {
+        assertThat(queryProcessor.process("5737ebd0: what is 11 plus 7"), is("18"));
+    }
+
+
+
 }
