@@ -25,8 +25,21 @@ public class QueryProcessor {
             return "Paris";
         } else if(query.toLowerCase().contains("who played james bond in the film dr no")){
             return "Sean Connery";
+        } else if(query.toLowerCase().contains("")){
+            return findBothSquareAndCube(query);
         }
         return "";
+    }
+
+    private String findBothSquareAndCube(String query) {
+        List<Integer> integers = getNumberForSquareAndCube(query);
+        Integer one = integers.get(0);
+        Integer two = integers.get(1);
+        if(!isCube(one) && !isSquare(one)){
+           return two.toString();
+        } else {
+            return one.toString();
+        }
     }
 
     private String findMinus(String query) {
@@ -56,6 +69,14 @@ public class QueryProcessor {
         return numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
+    private List<Integer> getNumberForSquareAndCube(String query) {
+        String[] s = query.split("\\:");
+        String s1 = s[2].replaceAll("[^-?0-9]+", " ");
+
+        List<String> numbers = Arrays.asList(s1.trim().split(" "));
+        return numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
+    }
+
     private String findMax(String query){
         String[] split =
             query.split("largest:")[1].split(",");//.chars().filter(Character::isDigit).max();
@@ -66,5 +87,19 @@ public class QueryProcessor {
             items.add(i);
         }
         return Collections.max(items).toString();
+    }
+
+
+
+    private boolean isCube(long input) {
+        double cubeRoot = Math.cbrt(input);
+        long intRoot = Math.round(cubeRoot);
+        return (intRoot*intRoot*intRoot) == input;
+    }
+
+    private boolean isSquare(long input) {
+        double cubeRoot = Math.sqrt(input);
+        long intRoot = Math.round(cubeRoot);
+        return (intRoot*intRoot*intRoot) == input;
     }
 }

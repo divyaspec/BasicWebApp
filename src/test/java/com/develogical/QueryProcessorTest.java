@@ -55,4 +55,9 @@ public class QueryProcessorTest {
     public void isMinus() throws Exception {
         assertThat(queryProcessor.process("0df512f0: what is 2 minus 16"), is("-14"));
     }
+
+    @Test
+    public void isBothSquareAndCube() throws Exception {
+        assertThat(queryProcessor.process("3a046b0: which of the following numbers is both a square and a cube: 720, 169"), is("169"));
+    }
 }
