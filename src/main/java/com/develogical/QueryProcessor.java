@@ -25,8 +25,10 @@ public class QueryProcessor {
             return "Paris";
         } else if(query.toLowerCase().contains("who played james bond in the film dr no")){
             return "Sean Connery";
-        } else if(query.toLowerCase().contains("")){
+        } else if(query.toLowerCase().contains("square and a cube")){
             return findBothSquareAndCube(query);
+        } else if(query.toLowerCase().contains("prime")){
+            return findPrime(query);
         }
         return "";
     }
@@ -40,6 +42,27 @@ public class QueryProcessor {
         } else {
             return one.toString();
         }
+    }
+
+    private String findPrime(String query) {
+        List<Integer> integers = getNumberForSquareAndCube(query);
+        Integer one = integers.get(0);
+        Integer two = integers.get(1);
+        if(isPrime(one)){
+            return one.toString();
+        } else {
+            return two.toString();
+        }
+    }
+
+    private boolean isPrime(Integer n) {
+        if(n%2 == 0) return false;
+        for(int i=3; i<n; i+=2){
+            if(n%i == 0){
+                return false;
+            }
+        }
+        return true;
     }
 
     private String findMinus(String query) {

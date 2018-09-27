@@ -60,4 +60,9 @@ public class QueryProcessorTest {
     public void isBothSquareAndCube() throws Exception {
         assertThat(queryProcessor.process("3a046b0: which of the following numbers is both a square and a cube: 720, 169"), is("169"));
     }
+
+    @Test
+    public void isPrime() throws Exception {
+        assertThat(queryProcessor.process("7b607730: which of the following numbers are primes: 223, 309"), is("223"));
+    }
 }
