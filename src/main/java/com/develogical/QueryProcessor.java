@@ -32,7 +32,7 @@ public class QueryProcessor {
 
     private String findMax(String query){
         String[] split =
-            query.split("\\:")[1].split(",");//.chars().filter(Character::isDigit).max();
+            query.split("largest:")[1].split(",");//.chars().filter(Character::isDigit).max();
         List<Integer> items = new ArrayList<>();
 
         for(String item: split){

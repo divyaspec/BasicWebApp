@@ -32,7 +32,7 @@ public class QueryProcessorTest {
 
     @Test
     public void isLargest() throws Exception {
-        assertThat(queryProcessor.process("largest: 34, 56, 67"), is("67"));
+        assertThat(queryProcessor.process("72064aa0: which of the following numbers is the largest: 79, 0, 98, 908"), is("908"));
     }
 
 }
