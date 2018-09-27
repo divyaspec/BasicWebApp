@@ -19,44 +19,41 @@ public class QueryProcessor {
             return findMax(query);
         } else if(query.toLowerCase().contains("multiplied")) {
             return findMulitply(query);
+        }else if(query.toLowerCase().contains("minus")) {
+            return findMinus(query);
         } else if(query.toLowerCase().contains("eiffel tower")) {
             return "Paris";
+        } else if(query.toLowerCase().contains("who played james bond in the film dr no")){
+            return "Sean Connery";
         }
         return "";
     }
 
-//    private String findDivide(String query) {
-//        String[] s = query.split("\\:");
-//        String s1 = s[1].replaceAll("[^-?0-9]+", " ");
-//
-//        List<String> numbers = Arrays.asList(s1.trim().split(" "));
-//        List<Integer> integers =
-//            numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
-//
-//        return String.valueOf((integers.get(0) / integers.get(1)));
-//    }
+    private String findMinus(String query) {
+        List<Integer> integers = getNumbers(query);
+        return String.valueOf((integers.get(0) - integers.get(1)));
+    }
+
 
     private String findMulitply(String query) {
-        String[] s = query.split("\\:");
-        String s1 = s[1].replaceAll("[^-?0-9]+", " ");
-
-        List<String> numbers = Arrays.asList(s1.trim().split(" "));
-        List<Integer> integers =
-            numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
+        List<Integer> integers = getNumbers(query);
 
         return String.valueOf((integers.get(0) * integers.get(1)));
     }
 
     private String calculate(String query) {
+        List<Integer> integers = getNumbers(query);
+
+        return String.valueOf((integers.get(0) + integers.get(1)));
+
+    }
+
+    private List<Integer> getNumbers(String query) {
         String[] s = query.split("\\:");
         String s1 = s[1].replaceAll("[^-?0-9]+", " ");
 
         List<String> numbers = Arrays.asList(s1.trim().split(" "));
-        List<Integer> integers =
-            numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
-
-        return String.valueOf((integers.get(0) + integers.get(1)));
-
+        return numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
     private String findMax(String query){

@@ -50,4 +50,9 @@ public class QueryProcessorTest {
     public void isEiffel() throws Exception {
         assertThat(queryProcessor.process("5737ebd0: which city is the Eiffel tower in"), is("Paris"));
     }
+
+    @Test
+    public void isMinus() throws Exception {
+        assertThat(queryProcessor.process("0df512f0: what is 2 minus 16"), is("-14"));
+    }
 }
