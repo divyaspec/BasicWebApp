@@ -19,9 +19,9 @@ public class QueryProcessor {
             return findMax(query);
         } else if(query.toLowerCase().contains("multiplied")) {
             return findMulitply(query);
-        } /*else if(query.toLowerCase().contains("divided")) {
-            return findDivide(query);
-        }*/
+        } else if(query.toLowerCase().contains("eiffel tower")) {
+            return "Paris";
+        }
         return "";
     }
 

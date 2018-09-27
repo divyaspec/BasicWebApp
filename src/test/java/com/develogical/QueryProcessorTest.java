@@ -45,5 +45,9 @@ public class QueryProcessorTest {
         assertThat(queryProcessor.process("5737ebd0: what is 11 multiplied 7"), is("77"));
     }
 
-
+    //which city is the Eiffel tower in
+    @Test
+    public void isEiffel() throws Exception {
+        assertThat(queryProcessor.process("5737ebd0: which city is the Eiffel tower in"), is("Paris"));
+    }
 }
